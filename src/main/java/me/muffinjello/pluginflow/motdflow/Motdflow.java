@@ -25,8 +25,11 @@ public class Motdflow extends JavaPlugin implements Listener {
                 sender.sendMessage(ChatColor.GRAY + "[Flow] Correct usage: " + ChatColor.YELLOW + "/motd <Message>");
             } else {
                 if (args.length >= 1){
-                    String Motd = args[0].trim();
-                    sender.sendMessage(Motd);
+                    String s = "";
+                    for (int x = 0; x < args.length; x++){
+                        s = s + args[x] + " ";
+                    }
+                    sender.sendMessage(s);
                 }
             }
         }
