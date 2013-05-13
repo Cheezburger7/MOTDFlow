@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Motdflow extends JavaPlugin implements Listener {
     public String Motd = "";
     public void onDisable() {
-        // TODO: Place any custom disable code here.
+        this.getConfig().set("motd", Motd);
     }
 
     public void onEnable() {
