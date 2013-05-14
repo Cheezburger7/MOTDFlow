@@ -4,8 +4,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +18,7 @@ public class Motdflow extends JavaPlugin implements Listener {
         PluginDescriptionFile pdf = this.getDescription();
         saveDefaultConfig();
         Motd = getConfig().getString("motd", Motd);
+        this.getServer().getPluginManager().registerEvents(this, this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -52,6 +55,10 @@ public class Motdflow extends JavaPlugin implements Listener {
             }
         }
         return false;
+    }
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onServerListPing(ServerListPingEvent event){
+        event.setMotd(Motd.replaceAll("(&([a-f0-9]))", "§$2"));
     }
 }
 
