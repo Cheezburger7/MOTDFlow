@@ -6,6 +6,6 @@ startup: postworld
 url: http://www.shortcutminecraft.com/
 version: '0.1'
 commands:
-    motd:
+    +motd:
         description: Change your server's MOTD
         usage: /motd <MOTD>
